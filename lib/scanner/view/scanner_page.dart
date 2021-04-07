@@ -17,6 +17,7 @@ class _ScannerPageState extends State<ScannerPage> {
   @override
   void initState() {
     super.initState();
+    scanBarcodeNormal();
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
@@ -27,6 +28,7 @@ class _ScannerPageState extends State<ScannerPage> {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
           "#ff6666", "Cancel", true, ScanMode.BARCODE);
       print(barcodeScanRes);
+      //send to API
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     }
@@ -55,7 +57,7 @@ class _ScannerPageState extends State<ScannerPage> {
                       children: <Widget>[
                         ElevatedButton(
                             onPressed: () => scanBarcodeNormal(),
-                            child: Text("Start barcode scan")),
+                            child: Text("Scan Again")),
                         Text('Scan result : $_scanBarcode\n',
                             style: TextStyle(fontSize: 20))
                       ])
