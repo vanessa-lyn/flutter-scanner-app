@@ -7,21 +7,13 @@ class ScannerViewModel extends BaseViewModel {
 
   final CatalogueService catalogueService;
 
-  String appBarTitle = "Scan Me";
-
   ScannerViewModel(this.catalogueService) : super(Starting());
 
-  @override
-  void handleSideEffects(_state) async {
-    super.handleSideEffects(_state);
-    if (_state is Starting) {
-      CatalogueResponse response = await onScanResult("9780099590088");
-      print("~~~ $response");
-    }
-  }
-
   Future<CatalogueResponse> onScanResult(String barcode) async {
+    print("~~~onScanResult $barcode");
     setState(Loading());
-    return catalogueService.fetchItem(barcode);
+    CatalogueResponse response = await catalogueService.fetchItem(barcode);
+    setState(Rest());
+    print("~~~onScanResult ${response.result.itemDetails.titles.en}");
   }
 }

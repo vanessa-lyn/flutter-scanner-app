@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:scan_me/common/view_state.dart';
 import 'package:scan_me/scanner/presentation/scanner_view_model.dart';
 import 'package:scan_me/services/catalogue_service.dart';
+import 'package:scan_me/scanner/view/scanner_view.dart';
 
 class ScannerPage extends StatelessWidget {
   @override
@@ -14,7 +15,7 @@ class ScannerPage extends StatelessWidget {
       ),
       child: Consumer<ScannerViewModel>(
         builder: (context, model, _) => Scaffold(
-          body: _getBody(model)
+            body: _getBody(model)
         ),
       ),
     );
@@ -23,11 +24,11 @@ class ScannerPage extends StatelessWidget {
   Widget _getBody(ScannerViewModel model) {
     if (model.state is Loading) {
       return Center(
-        child: CircularProgressIndicator()
+          child: CircularProgressIndicator()
       );
     } else {
       return Center(
-        child: Text("Scanner Page"),
+        child: ScannerView()
       );
     }
   }
