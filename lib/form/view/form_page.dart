@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:scan_me/common/view/colors.dart';
 import 'package:scan_me/common/view/widgets/scan_me_button.dart';
 import 'package:scan_me/common/view/widgets/text_header.dart';
 import 'package:scan_me/form/presentation/form_view_model.dart';
@@ -22,7 +23,11 @@ class FormPage extends StatelessWidget {
       child: Consumer<FormViewModel>(
         builder: (context, model, _) => Scaffold(
             appBar: AppBar(
-              // title: Text('Create Listing'),
+              iconTheme: IconThemeData(
+                color: AppColors.BLUE,
+              ),
+              backgroundColor: Colors.transparent,
+              elevation: 0.0
             ),
             body: Form(
               key: _formKey,
@@ -32,15 +37,27 @@ class FormPage extends StatelessWidget {
                   child: Column(
                     children: [
                     ...[
-                      TextHeader(
+                     Align(
+                       alignment: Alignment.topLeft,
+                        child: TextHeader(
                           text: 'Great, let\'s get a few more details.',
+                        ),
                       ),
                       SizedBox(
-                        width: 200,
-                        height: 200,
-                        child: Image.network(
-                          model.imageUrl,
-                          fit: BoxFit.contain,
+                        width: 150,
+                        height: 150,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 10,
+                            ),
+                          ),
+                          child: Image.network(
+                            model.imageUrl,
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
                       TextFormField(
@@ -124,7 +141,7 @@ class FormPage extends StatelessWidget {
                         widget,
                         SizedBox(
                           height: 24,
-                        )
+                        ),
                       ])
                     ]
 
