@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const rootRoute = "/";
+const formRoute = "/formRoute";
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {

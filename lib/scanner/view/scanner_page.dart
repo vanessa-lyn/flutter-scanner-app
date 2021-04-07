@@ -14,14 +14,14 @@ class ScannerPage extends StatelessWidget {
       ),
       child: Consumer<ScannerViewModel>(
         builder: (context, model, _) => Scaffold(
-          body: _getBody(model.state)
+          body: _getBody(model)
         ),
       ),
     );
   }
 
-  Widget _getBody(ViewState state) {
-    if (state is Loading) {
+  Widget _getBody(ScannerViewModel model) {
+    if (model.state is Loading) {
       return Center(
         child: CircularProgressIndicator()
       );
