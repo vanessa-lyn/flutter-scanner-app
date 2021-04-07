@@ -1,5 +1,6 @@
 import 'package:scan_me/common/base_view_model.dart';
 import 'package:scan_me/common/view_state.dart';
+import 'package:scan_me/scanner/data/scanner_item.dart';
 import 'package:scan_me/services/catalogue_service.dart';
 import 'package:scan_me/services/dto/catalogue_response.dart';
 
@@ -9,11 +10,19 @@ class ScannerViewModel extends BaseViewModel {
 
   ScannerViewModel(this.catalogueService) : super(Starting());
 
-  Future<CatalogueResponse> onScanResult(String barcode) async {
-    print("~~~onScanResult $barcode");
+  Future<ScannerItem> onScanResult(String barcode) async {
     setState(Loading());
     CatalogueResponse response = await catalogueService.fetchItem(barcode);
-    setState(Rest());
-    print("~~~onScanResult ${response.result.itemDetails.titles.en}");
+    return response.toScannerItem();
+  }
+}
+
+extension CatalogueResponseExtensions on CatalogueResponse {
+  ScannerItem toScannerItem() {
+    return ScannerItem(
+      "",
+      "",
+      0.00
+    );
   }
 }

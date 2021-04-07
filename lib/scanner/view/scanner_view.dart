@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:provider/provider.dart';
+import 'package:scan_me/app_router.dart';
+import 'package:scan_me/scanner/data/scanner_item.dart';
 import 'package:scan_me/scanner/presentation/scanner_view_model.dart';
-
 
 class ScannerView extends StatefulWidget {
   @override
@@ -13,58 +14,35 @@ class ScannerView extends StatefulWidget {
 }
 
 class _ScannerViewState extends State<ScannerView> {
-  String _scanBarcode = 'Unknown';
-
   @override
   void initState() {
     super.initState();
     scanBarcodeNormal();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> scanBarcodeNormal() async {
-    String barcodeScanRes;
-    // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode("#ff6666", "Cancel", true, ScanMode.BARCODE,);
-      print(barcodeScanRes);
+      String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+        "#ff6666",
+        "Cancel",
+        true,
+        ScanMode.BARCODE,
+      );
+
       ScannerViewModel model = Provider.of<ScannerViewModel>(context, listen: false);
-      await model.onScanResult(barcodeScanRes);
-      //send to API
+      ScannerItem scannerItem = await model.onScanResult(barcodeScanRes);
+
+      Navigator.pushNamed(context, formRoute, arguments: scannerItem);
     } on PlatformException {
-      barcodeScanRes = 'Failed to get platform version.';
+      throw Exception("There was an issue scanning");
     }
 
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
     if (!mounted) return;
-
-    setState(() {
-      _scanBarcode = barcodeScanRes;
-    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-            appBar: AppBar(title: const Text('Barcode scan')),
-            body: Builder(builder: (BuildContext context) {
-              return Container(
-                  alignment: Alignment.center,
-                  child: Flex(
-                      direction: Axis.vertical,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        ElevatedButton(
-                            onPressed: () => scanBarcodeNormal(),
-                            child: Text("Scan Again")),
-                        Text('Scan result : $_scanBarcode\n',
-                            style: TextStyle(fontSize: 20))
-                      ])
-              );
-            },),),);
+    // We're just using a Stateful widget to kick off the scanner. This widget doesn't have UI.
+    return Scaffold();
   }
 }
-
