@@ -10,7 +10,7 @@ class FormViewModel extends BaseViewModel {
   String title = "";
   String imageUrl = "";
   String formattedPrice = "";
-  int quantity = 1;
+  String quantity = "1";
   String description = "";
 
   FormViewModel(this._scannerItem) : super(Rest()) {

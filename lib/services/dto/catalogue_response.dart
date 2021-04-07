@@ -110,7 +110,7 @@ class ItemDetails {
     packageDimensions = json['packageDimensions'] != null
         ? new ItemDimensions.fromJson(json['packageDimensions'])
         : null;
-    msrp = json['msrp'] != null ? new Msrp.fromJson(json['msrp']) : null;
+    msrp = json['msrp'] != null ? new Msrp.fromJson(json['msrp']) : Msrp(amount: 0.00);
   }
 
   Map<String, dynamic> toJson() {
