@@ -1,3 +1,6 @@
+# Local Config
+./assets/local_config.json
+
 # Miscellaneous
 *.class
 *.log

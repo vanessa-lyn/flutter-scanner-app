@@ -9,23 +9,20 @@ import 'package:scan_me/scanner/view/scanner_view.dart';
 class ScannerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // ScannerViewModel model = Provider.of<ScannerViewModel>(context);
-    // model.onScanResult();
-
     return ChangeNotifierProvider<ScannerViewModel>(
       create: (context) => ScannerViewModel(
         Provider.of<CatalogueService>(context, listen: false),
       ),
       child: Consumer<ScannerViewModel>(
         builder: (context, model, _) => Scaffold(
-            body: _getBody(model.state)
+            body: _getBody(model)
         ),
       ),
     );
   }
 
-  Widget _getBody(ViewState state) {
-    if (state is Loading) {
+  Widget _getBody(ScannerViewModel model) {
+    if (model.state is Loading) {
       return Center(
           child: CircularProgressIndicator()
       );
