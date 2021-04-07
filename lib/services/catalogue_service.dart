@@ -24,5 +24,4 @@ class CatalogueService {
       throw Exception('Failed with status code: ${response.statusCode}');
     }
   }
-
 }
