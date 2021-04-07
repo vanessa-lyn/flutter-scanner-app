@@ -3,6 +3,7 @@ import 'package:scan_me/app_router.dart';
 import 'package:scan_me/scanner/view/scanner_page.dart';
 import 'package:provider/provider.dart';
 import 'package:scan_me/services/catalogue_service.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 void main() {
   runApp(MyApp());
