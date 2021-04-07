@@ -5,7 +5,6 @@ import 'package:scan_me/services/catalogue_service.dart';
 import 'package:scan_me/services/dto/catalogue_response.dart';
 
 class ScannerViewModel extends BaseViewModel {
-
   final CatalogueService catalogueService;
 
   ScannerViewModel(this.catalogueService) : super(Starting());
@@ -20,9 +19,9 @@ class ScannerViewModel extends BaseViewModel {
 extension CatalogueResponseExtensions on CatalogueResponse {
   ScannerItem toScannerItem() {
     return ScannerItem(
-      "",
-      "",
-      0.00
+      result.itemDetails.titles.en,
+      result.itemDetails.imageUrl,
+      result.itemDetails.msrp.amount,
     );
   }
 }
