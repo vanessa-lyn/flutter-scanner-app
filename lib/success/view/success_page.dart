@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scan_me/app_router.dart';
+import 'package:scan_me/common/view/colors.dart';
 import 'package:scan_me/common/view/widgets/network_image.dart';
 import 'package:scan_me/common/view/widgets/scan_me_button.dart';
 import 'package:scan_me/form/data/repository/selling_result.dart';
 import 'package:scan_me/success/presentation/success_view_model.dart';
 
-const double FONT_SIZE_BODY = 16;
+const double FONT_SIZE_BODY = 12;
 
 class SuccessPage extends StatelessWidget {
   final SellingResult sellingResult;
@@ -58,7 +59,7 @@ class SuccessPage extends StatelessWidget {
                                   Container(height: 10),
                                   Text(
                                     model.viewState.sellingResult.formattedPaymentMethod,
-                                    style: TextStyle(fontSize: 13),
+                                    style: TextStyle(fontSize: 10),
                                   ),
                                   Container(height: 2),
                                   Text(
@@ -83,12 +84,17 @@ class SuccessPage extends StatelessWidget {
                 ),
                 Container(height: 16),
                 TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "View your live listings",
-                    style: TextStyle(fontSize: FONT_SIZE),
-                  ),
-                )
+                    onPressed: (){},
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "View your live listings ",
+                          style: TextStyle(fontSize: FONT_SIZE),
+                        ),
+                        Icon(Icons.open_in_new)
+                      ],
+                    )),
               ],
             ),
           ),

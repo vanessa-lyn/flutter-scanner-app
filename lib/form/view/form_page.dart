@@ -84,7 +84,7 @@ class FormPage extends StatelessWidget {
                                         child: IconButton(
                                             icon: const Icon(
                                                 Icons.add_photo_alternate_outlined),
-                                            color: AppColors.GREY,
+                                            color: AppColors.BLUE,
                                             onPressed: () {}),
                                       ),
                                     ),
@@ -189,7 +189,7 @@ class FormPage extends StatelessWidget {
                                   keyboardType: TextInputType.text,
                                   textInputAction: TextInputAction.done,
                                   initialValue: model.listingTemplate.description,
-                                  maxLines: 10,
+                                  maxLines: 5,
                                   expands: false,
                                   decoration: InputDecoration(
                                       labelText: 'Description (optional)',
