@@ -3,7 +3,7 @@ class ScannerItem {
   final String imageUrl;
   final double price;
   final String category;
-  final List categories;
+  final String categoryPath;
 
-  ScannerItem(this.title, this.imageUrl, this.price, this.category, this.categories);
+  ScannerItem(this.title, this.imageUrl, this.price, this.category, this.categoryPath);
 }

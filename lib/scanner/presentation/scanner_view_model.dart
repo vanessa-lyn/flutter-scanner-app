@@ -18,16 +18,23 @@ class ScannerViewModel extends BaseViewModel {
 
 extension CatalogueResponseExtensions on CatalogueResponse {
   ScannerItem toScannerItem() {
+    List<AmazonCategories> categories = result.offers[0].marketSpecificData.amazonCategories;
+    String category = categories[0].name;
 
-
-    // secondCategory =  if (result.offers[1] != null) {result.offers[1]};
+    String categoryPath = "";
+    for (var i = 1; i < categories.length; i++) {
+      categoryPath += categories[i].name;
+      if (i < categories.length - 1) {
+        categoryPath += " > ";
+      }
+    }
 
     return ScannerItem(
       result.itemDetails.titles.en,
       result.itemDetails.imageUrl,
       result.itemDetails.msrp.amount,
-      result.offers[0].marketSpecificData.amazonCategories[0].name,
-      result.offers[0].marketSpecificData.amazonCategories
+      category,
+      categoryPath,
     );
   }
 }

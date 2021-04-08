@@ -14,7 +14,7 @@ class MockTradeMeDataSource extends SellingDataSource {
         listingTemplate.formattedPrice,
         listingTemplate.imageUrl,
         listingTemplate.category,
-        listingTemplate.categories
+        listingTemplate.categoryPath
       ),
     );
   }
