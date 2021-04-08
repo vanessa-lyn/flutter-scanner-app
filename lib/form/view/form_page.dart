@@ -50,7 +50,7 @@ class FormPage extends StatelessWidget {
                           height: 100,
                           child: Container(
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
+                              borderRadius: BorderRadius.circular(5),
                               border: Border.all(
                                 color: AppColors.GREY,
                                 width: 1,
@@ -70,7 +70,7 @@ class FormPage extends StatelessWidget {
                             height: 100,
                             child: Container(
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
+                                borderRadius: BorderRadius.circular(5),
                                 border: Border.all(
                                   color: AppColors.GREY,
                                   width: 1,
@@ -78,8 +78,8 @@ class FormPage extends StatelessWidget {
                                 color: AppColors.LIGHTGREY,
                               ),
                               child: IconButton(
-                                // icon: const Icon(Icons.file_upload),
                                 icon: const Icon(Icons.image_search),
+                                color: AppColors.GREY,
                                 onPressed: ()  {}
                               ),
                             ),
@@ -93,7 +93,11 @@ class FormPage extends StatelessWidget {
                         textInputAction: TextInputAction.next,
                         initialValue: model.listingTemplate.title,
                         decoration: InputDecoration(
-                            labelText: 'Title', border: OutlineInputBorder()),
+                            labelText: 'Title',
+                            border: OutlineInputBorder(),
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: const BorderSide(color: AppColors.GREY),
+                            )),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter a title';
@@ -107,7 +111,11 @@ class FormPage extends StatelessWidget {
                         textInputAction: TextInputAction.next,
                         initialValue: model.listingTemplate.formattedPrice,
                         decoration: InputDecoration(
-                            labelText: 'Price', border: OutlineInputBorder()),
+                            labelText: 'Price',
+                            border: OutlineInputBorder(),
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: const BorderSide(color: AppColors.GREY),
+                            )),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter a price';
@@ -122,7 +130,10 @@ class FormPage extends StatelessWidget {
                         initialValue: model.listingTemplate.quantity,
                         decoration: InputDecoration(
                             labelText: 'Quantity',
-                            border: OutlineInputBorder()),
+                            border: OutlineInputBorder(),
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: const BorderSide(color: AppColors.GREY),
+                            )),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter quantity';
@@ -140,6 +151,9 @@ class FormPage extends StatelessWidget {
                         decoration: InputDecoration(
                             labelText: 'Description (optional)',
                             border: OutlineInputBorder(),
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: const BorderSide(color: AppColors.GREY),
+                            ),
                             alignLabelWithHint: true,
                             hintText:
                                 "Describe your listing with any information helpful for buyers."),

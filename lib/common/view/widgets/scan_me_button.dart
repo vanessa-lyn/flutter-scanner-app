@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scan_me/common/view/colors.dart';
 
-const double BUTTON_HEIGHT = 40;
+const double BUTTON_HEIGHT = 60;
 
 class ScanMeButton extends StatelessWidget {
   final Function onPressed;
@@ -14,14 +14,14 @@ class ScanMeButton extends StatelessWidget {
     return SizedBox(
       height: BUTTON_HEIGHT,
       width: double.infinity,
-      child: FlatButton(
-        color: AppColors.BLUE,
+      child: TextButton(
         onPressed: () {
           onPressed();
         },
-        child: Text(
-          buttonText,
-          style: TextStyle(color: Colors.white),
+        child: Text(buttonText),
+        style: TextButton.styleFrom(
+          primary: Colors.white,
+          backgroundColor: AppColors.BLUE
         ),
       ),
     );
