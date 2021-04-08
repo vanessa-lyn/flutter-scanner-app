@@ -36,68 +36,101 @@ class FormPage extends StatelessWidget {
               child: SingleChildScrollView(
                 padding: EdgeInsets.all(16),
                 child: Center(
-                    child: Column(children: [
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                   ...[
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: TextHeader(
+                    TextHeader(
                         text: 'Great, let\'s get a few more details.',
                       ),
-                    ),
-                    SizedBox(
-                      width: 150,
-                      height: 150,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(
-                            color: Colors.black,
-                            width: 10,
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 100,
+                          height: 100,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              border: Border.all(
+                                color: AppColors.GREY,
+                                width: 1,
+                              ),
+                              color: AppColors.LIGHTGREY,
+                            ),
+                            child: Image.network(
+                              model.listingTemplate.imageUrl,
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         ),
-                        child: Image.network(
-                          model.listingTemplate.imageUrl,
-                          fit: BoxFit.contain,
+                        Padding(
+                          padding: EdgeInsets.only(left: 16),
+                          child: SizedBox(
+                            width: 100,
+                            height: 100,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(
+                                  color: AppColors.GREY,
+                                  width: 1,
+                                ),
+                                color: AppColors.LIGHTGREY,
+                              ),
+                              child: IconButton(
+                                // icon: const Icon(Icons.file_upload),
+                                icon: const Icon(Icons.image_search),
+                                onPressed: ()  {}
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                     TextFormField(
                         keyboardType: TextInputType.text,
                         // autofocus: true,
                         textInputAction: TextInputAction.next,
                         initialValue: model.listingTemplate.title,
-                        decoration: InputDecoration(labelText: 'Title', border: OutlineInputBorder()),
+                        decoration: InputDecoration(
+                            labelText: 'Title', border: OutlineInputBorder()),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter a title';
                           }
                           return null;
                         },
-                        onSaved: (value) => model.listingTemplate.title = value),
+                        onSaved: (value) =>
+                            model.listingTemplate.title = value),
                     TextFormField(
                         keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.next,
                         initialValue: model.listingTemplate.formattedPrice,
-                        decoration: InputDecoration(labelText: 'Price', border: OutlineInputBorder()),
+                        decoration: InputDecoration(
+                            labelText: 'Price', border: OutlineInputBorder()),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter a price';
                           }
                           return null;
                         },
-                        onSaved: (value) => model.listingTemplate.formattedPrice = value),
+                        onSaved: (value) =>
+                            model.listingTemplate.formattedPrice = value),
                     TextFormField(
-                        keyboardType: TextInputType.text,
+                        keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.next,
                         initialValue: model.listingTemplate.quantity,
-                        decoration: InputDecoration(labelText: 'Quantity', border: OutlineInputBorder()),
+                        decoration: InputDecoration(
+                            labelText: 'Quantity',
+                            border: OutlineInputBorder()),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter quantity';
                           }
                           return null;
                         },
-                        onSaved: (value) => model.listingTemplate.quantity = value),
+                        onSaved: (value) =>
+                            model.listingTemplate.quantity = value),
                     TextFormField(
                         keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.done,
@@ -108,16 +141,20 @@ class FormPage extends StatelessWidget {
                             labelText: 'Description (optional)',
                             border: OutlineInputBorder(),
                             alignLabelWithHint: true,
-                            hintText: "Describe your listing with any information helpful for buyers."),
+                            hintText:
+                                "Describe your listing with any information helpful for buyers."),
                         validator: (value) {
                           return null;
                         },
-                        onSaved: (value) => model.listingTemplate.description = value),
+                        onSaved: (value) =>
+                            model.listingTemplate.description = value),
                     ScanMeButton(
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
-                          SellingResult sellingResult = await model.onStartListing();
-                          Navigator.pushNamed(context, successRoute, arguments: sellingResult);
+                          SellingResult sellingResult =
+                              await model.onStartListing();
+                          Navigator.pushNamed(context, successRoute,
+                              arguments: sellingResult);
                         }
                       },
                       buttonText: "Create listing",
