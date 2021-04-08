@@ -14,11 +14,6 @@ class ScanMeImage extends StatelessWidget {
       height: 100,
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          border: Border.all(
-            color: AppColors.GREY,
-            width: 1,
-          ),
           color: AppColors.LIGHTGREY,
         ),
         child: Image.network(

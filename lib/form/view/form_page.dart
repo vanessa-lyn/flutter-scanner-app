@@ -34,7 +34,13 @@ class FormPage extends StatelessWidget {
                     color: AppColors.BLUE,
                   ),
                   backgroundColor: Colors.transparent,
-                  elevation: 0.0),
+                  elevation: 0.0,
+                  automaticallyImplyLeading: false,
+                leading: new IconButton(
+                  icon: new Icon(Icons.arrow_back),
+                  onPressed: () => {Navigator.pushNamed(context, rootRoute)}
+                ),
+                ),
               body: Form(
                 key: _formKey,
                 child: SingleChildScrollView(
@@ -84,7 +90,7 @@ class FormPage extends StatelessWidget {
                                         child: IconButton(
                                             icon: const Icon(
                                                 Icons.add_photo_alternate_outlined),
-                                            color: AppColors.GREY,
+                                            color: AppColors.BLUE,
                                             onPressed: () {}),
                                       ),
                                     ),
@@ -189,7 +195,7 @@ class FormPage extends StatelessWidget {
                                   keyboardType: TextInputType.text,
                                   textInputAction: TextInputAction.done,
                                   initialValue: model.listingTemplate.description,
-                                  maxLines: 10,
+                                  maxLines: 5,
                                   expands: false,
                                   decoration: InputDecoration(
                                       labelText: 'Description (optional)',
