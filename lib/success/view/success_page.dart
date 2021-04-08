@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:scan_me/scanner/presentation/scanner_view_model.dart';
+import 'package:scan_me/form/data/repository/selling_result.dart';
 import 'package:scan_me/success/presentation/success_view_model.dart';
 
 class SuccessPage extends StatelessWidget {
+  final SellingResult sellingResult;
+
+  const SuccessPage({Key key, this.sellingResult}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<SuccessViewModel>(
-      create: (context) => SuccessViewModel(),
-      child: Consumer<ScannerViewModel>(
+      create: (context) => SuccessViewModel(sellingResult),
+      child: Consumer<SuccessViewModel>(
         builder: (context, model, _) => Scaffold(
-            body: Center()
+          body: Center(
+            child: Text(model.viewState.sellingResult.title),
+          ),
         ),
       ),
     );
