@@ -24,6 +24,6 @@ class FormViewModel extends BaseViewModel {
 
 extension ScannerItemExtensions on ScannerItem {
   ListingTemplate toListingTemplate() {
-    return ListingTemplate(title: title, imageUrl: imageUrl, quantity: "1", formattedPrice: "\$$price");
+    return ListingTemplate(title: title, imageUrl: imageUrl, quantity: "1", formattedPrice: "\$$price", category: category );
   }
 }

@@ -22,6 +22,7 @@ extension CatalogueResponseExtensions on CatalogueResponse {
       result.itemDetails.titles.en,
       result.itemDetails.imageUrl,
       result.itemDetails.msrp.amount,
+      result.offers[0].marketSpecificData.amazonCategories[0].name
     );
   }
 }

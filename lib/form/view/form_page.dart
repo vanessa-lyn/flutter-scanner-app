@@ -78,8 +78,8 @@ class FormPage extends StatelessWidget {
                                 color: AppColors.LIGHTGREY,
                               ),
                               child: IconButton(
-                                icon: const Icon(Icons.image_search),
-                                color: AppColors.GREY,
+                                icon: const Icon(Icons.add_photo_alternate_outlined),
+                                color: AppColors.BLUE,
                                 onPressed: ()  {}
                               ),
                             ),
@@ -106,6 +106,44 @@ class FormPage extends StatelessWidget {
                         },
                         onSaved: (value) =>
                             model.listingTemplate.title = value),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(right: 16),
+                          child: SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: Container(
+                              child: IconButton(
+                                  icon: const Icon(Icons.list),
+                                  color: AppColors.BLUE,
+                                  iconSize: 30,
+                                  onPressed: ()  {}
+                              ),
+                            ),
+                          ),
+                        ),
+                        Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                            Text(
+                              model.listingTemplate.category,
+                              style: TextStyle(
+                                // fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              )),
+                            Text(
+                              'Lorem Ipsum > Accessories',
+                              style: TextStyle(
+                                // fontWeight: FontWeight.bold,
+                                fontSize: 10,
+                                color: AppColors.DARKGREY
+                              )),
+
+                          ]
+                        )
+                      ],
+                    ),
                     TextFormField(
                         keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.next,
