@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scan_me/common/view/colors.dart';
 
 const double BUTTON_HEIGHT = 60;
+const double FONT_SIZE = 18;
 
 class ScanMeButton extends StatelessWidget {
   final Function onPressed;
@@ -18,7 +19,7 @@ class ScanMeButton extends StatelessWidget {
         onPressed: () {
           onPressed();
         },
-        child: Text(buttonText),
+        child: Text(buttonText,  style: TextStyle(fontSize: FONT_SIZE),),
         style: TextButton.styleFrom(
           primary: Colors.white,
           backgroundColor: AppColors.BLUE
