@@ -27,7 +27,7 @@ class FormPage extends StatelessWidget {
       ),
       child: Consumer<FormViewModel>(
         builder: (context, model, _) => ScanMeLoadingOverlay(
-          isLoading: model.state is Loading   ,
+          isLoading: model.state is Loading,
           child: Scaffold(
               appBar: AppBar(
                   iconTheme: IconThemeData(
@@ -41,152 +41,193 @@ class FormPage extends StatelessWidget {
                   padding: EdgeInsets.all(16),
                   child: Center(
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                    ...[
-                      TextHeader(
-                          text: 'Great, let\'s get a few more details.',
-                        ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 100,
-                            height: 100,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                border: Border.all(
-                                  color: AppColors.GREY,
-                                  width: 1,
-                                ),
-                                color: AppColors.LIGHTGREY,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ...[
+                              TextHeader(
+                                text: 'Great, let\'s get a few more details.',
                               ),
-                              child: Image.network(
-                                model.listingTemplate.imageUrl,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 16),
-                            child: SizedBox(
-                              width: 100,
-                              height: 100,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(
-                                    color: AppColors.GREY,
-                                    width: 1,
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 100,
+                                    height: 100,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        border: Border.all(
+                                          color: AppColors.GREY,
+                                          width: 1,
+                                        ),
+                                        color: AppColors.LIGHTGREY,
+                                      ),
+                                      child: Image.network(
+                                        model.listingTemplate.imageUrl,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
                                   ),
-                                  color: AppColors.LIGHTGREY,
-                                ),
-                                child: IconButton(
-                                  icon: const Icon(Icons.image_search),
-                                  color: AppColors.GREY,
-                                  onPressed: ()  {}
-                                ),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 16),
+                                    child: SizedBox(
+                                      width: 100,
+                                      height: 100,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5),
+                                          border: Border.all(
+                                            color: AppColors.GREY,
+                                            width: 1,
+                                          ),
+                                          color: AppColors.LIGHTGREY,
+                                        ),
+                                        child: IconButton(
+                                            icon: const Icon(
+                                                Icons.add_photo_alternate_outlined),
+                                            color: AppColors.GREY,
+                                            onPressed: () {}),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      TextFormField(
-                          keyboardType: TextInputType.text,
-                          // autofocus: true,
-                          textInputAction: TextInputAction.next,
-                          initialValue: model.listingTemplate.title,
-                          decoration: InputDecoration(
-                              labelText: 'Title',
-                              border: OutlineInputBorder(),
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: const BorderSide(color: AppColors.GREY),
-                              )),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter a title';
-                            }
-                            return null;
-                          },
-                          onSaved: (value) =>
-                              model.listingTemplate.title = value),
-                      TextFormField(
-                          keyboardType: TextInputType.text,
-                          textInputAction: TextInputAction.next,
-                          initialValue: model.listingTemplate.formattedPrice,
-                          decoration: InputDecoration(
-                              labelText: 'Price',
-                              border: OutlineInputBorder(),
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: const BorderSide(color: AppColors.GREY),
-                              )),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter a price';
-                            }
-                            return null;
-                          },
-                          onSaved: (value) =>
-                              model.listingTemplate.formattedPrice = value),
-                      TextFormField(
-                          keyboardType: TextInputType.number,
-                          textInputAction: TextInputAction.next,
-                          initialValue: model.listingTemplate.quantity,
-                          decoration: InputDecoration(
-                              labelText: 'Quantity',
-                              border: OutlineInputBorder(),
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: const BorderSide(color: AppColors.GREY),
-                              )),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter quantity';
-                            }
-                            return null;
-                          },
-                          onSaved: (value) =>
-                              model.listingTemplate.quantity = value),
-                      TextFormField(
-                          keyboardType: TextInputType.text,
-                          textInputAction: TextInputAction.done,
-                          initialValue: model.listingTemplate.description,
-                          maxLines: 10,
-                          expands: false,
-                          decoration: InputDecoration(
-                              labelText: 'Description (optional)',
-                              border: OutlineInputBorder(),
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: const BorderSide(color: AppColors.GREY),
+                              TextFormField(
+                                  keyboardType: TextInputType.text,
+                                  // autofocus: true,
+                                  textInputAction: TextInputAction.next,
+                                  initialValue: model.listingTemplate.title,
+                                  decoration: InputDecoration(
+                                      labelText: 'Title',
+                                      border: OutlineInputBorder(),
+                                      enabledBorder: const OutlineInputBorder(
+                                        borderSide:
+                                        const BorderSide(color: AppColors.GREY),
+                                      )),
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter a title';
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (value) =>
+                                  model.listingTemplate.title = value),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 16),
+                                    child: SizedBox(
+                                      width: 50,
+                                      height: 50,
+                                      child: Container(
+                                        child: IconButton(
+                                            icon: const Icon(Icons.list),
+                                            color: AppColors.BLUE,
+                                            iconSize: 30,
+                                            onPressed: () {}),
+                                      ),
+                                    ),
+                                  ),
+                                  Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(model.listingTemplate.category,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                            )),
+                                        Text(
+                                            model.listingTemplate.categories[1]
+                                                .name +
+                                                " > " +
+                                                model.listingTemplate.categories[2]
+                                                    .name,
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                color: AppColors.DARKGREY)),
+                                      ])
+                                ],
                               ),
-                              alignLabelWithHint: true,
-                              hintText:
-                                  "Describe your listing with any information helpful for buyers."),
-                          validator: (value) {
-                            return null;
-                          },
-                          onSaved: (value) =>
-                              model.listingTemplate.description = value),
-                      ScanMeButton(
-                        onPressed: () async {
-                          if (_formKey.currentState.validate()) {
-                            SellingResult sellingResult = await model.onStartListing();
-                            Navigator.pushNamedAndRemoveUntil(
-                              context,
-                              successRoute,
-                              (Route<dynamic> route) => false,
-                              arguments: sellingResult,
-                            );
-                          }
-                        },
-                        buttonText: "Create listing",
-                      )
-                    ].expand((widget) => [
-                          widget,
-                          SizedBox(
-                            height: 24,
-                          ),
-                        ])
-                  ])),
+                              TextFormField(
+                                  keyboardType: TextInputType.text,
+                                  textInputAction: TextInputAction.next,
+                                  initialValue:
+                                  model.listingTemplate.formattedPrice,
+                                  decoration: InputDecoration(
+                                      labelText: 'Price',
+                                      border: OutlineInputBorder(),
+                                      enabledBorder: const OutlineInputBorder(
+                                        borderSide:
+                                        const BorderSide(color: AppColors.GREY),
+                                      )),
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter a price';
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (value) =>
+                                  model.listingTemplate.formattedPrice = value),
+                              TextFormField(
+                                  keyboardType: TextInputType.number,
+                                  textInputAction: TextInputAction.next,
+                                  initialValue: model.listingTemplate.quantity,
+                                  decoration: InputDecoration(
+                                      labelText: 'Quantity',
+                                      border: OutlineInputBorder(),
+                                      enabledBorder: const OutlineInputBorder(
+                                        borderSide:
+                                        const BorderSide(color: AppColors.GREY),
+                                      )),
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter quantity';
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (value) =>
+                                  model.listingTemplate.quantity = value),
+                              TextFormField(
+                                  keyboardType: TextInputType.text,
+                                  textInputAction: TextInputAction.done,
+                                  initialValue: model.listingTemplate.description,
+                                  maxLines: 10,
+                                  expands: false,
+                                  decoration: InputDecoration(
+                                      labelText: 'Description (optional)',
+                                      border: OutlineInputBorder(),
+                                      enabledBorder: const OutlineInputBorder(
+                                        borderSide:
+                                        const BorderSide(color: AppColors.GREY),
+                                      ),
+                                      alignLabelWithHint: true,
+                                      hintText:
+                                      "Describe your listing with any information helpful for buyers."),
+                                  validator: (value) {
+                                    return null;
+                                  },
+                                  onSaved: (value) =>
+                                  model.listingTemplate.description = value),
+                              ScanMeButton(
+                                onPressed: () async {
+                                  if (_formKey.currentState.validate()) {
+                                    SellingResult sellingResult =
+                                    await model.onStartListing();
+                                    Navigator.pushNamedAndRemoveUntil(
+                                      context,
+                                      successRoute,
+                                          (Route<dynamic> route) => false,
+                                      arguments: sellingResult,
+                                    );
+                                  }
+                                },
+                                buttonText: "Create listing",
+                              )
+                            ].expand((widget) => [
+                              widget,
+                              SizedBox(
+                                height: 24,
+                              ),
+                            ])
+                          ])),
                 ),
               )),
         ),

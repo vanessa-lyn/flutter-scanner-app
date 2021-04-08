@@ -10,9 +10,9 @@ class TextHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Great, let\'s get a few\n more details.',
+      'Great, let\'s get a few\nmore details.',
       style: TextStyle(
-        fontSize: 20,
+        fontSize: 24,
         fontWeight: FontWeight.bold,
       ),
     );

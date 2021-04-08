@@ -3,6 +3,8 @@ class SellingResult {
   final String formattedPaymentMethod;
   final String formattedPrice;
   final String imageUrl;
+  final String category;
+  final List categories;
 
-  SellingResult(this.title, this.formattedPaymentMethod, this.formattedPrice, this.imageUrl);
+  SellingResult(this.title, this.formattedPaymentMethod, this.formattedPrice, this.imageUrl, this.category, this.categories);
 }

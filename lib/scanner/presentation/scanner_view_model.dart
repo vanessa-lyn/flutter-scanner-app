@@ -18,10 +18,16 @@ class ScannerViewModel extends BaseViewModel {
 
 extension CatalogueResponseExtensions on CatalogueResponse {
   ScannerItem toScannerItem() {
+
+
+    // secondCategory =  if (result.offers[1] != null) {result.offers[1]};
+
     return ScannerItem(
       result.itemDetails.titles.en,
       result.itemDetails.imageUrl,
       result.itemDetails.msrp.amount,
+      result.offers[0].marketSpecificData.amazonCategories[0].name,
+      result.offers[0].marketSpecificData.amazonCategories
     );
   }
 }
