@@ -34,7 +34,13 @@ class FormPage extends StatelessWidget {
                     color: AppColors.BLUE,
                   ),
                   backgroundColor: Colors.transparent,
-                  elevation: 0.0),
+                  elevation: 0.0,
+                  automaticallyImplyLeading: false,
+                leading: new IconButton(
+                  icon: new Icon(Icons.arrow_back),
+                  onPressed: () => {Navigator.pushNamed(context, rootRoute)}
+                ),
+                ),
               body: Form(
                 key: _formKey,
                 child: SingleChildScrollView(
