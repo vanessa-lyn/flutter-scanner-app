@@ -41,9 +41,8 @@ class CatalogueResponse {
 class CatalogueItem {
   ItemDetails itemDetails;
   List<Offers> offers;
-  Demand demand;
 
-  CatalogueItem({this.itemDetails, this.offers, this.demand});
+  CatalogueItem({this.itemDetails, this.offers});
 
   CatalogueItem.fromJson(Map<String, dynamic> json) {
     itemDetails = json['itemDetails'] != null
@@ -55,8 +54,6 @@ class CatalogueItem {
         offers.add(new Offers.fromJson(v));
       });
     }
-    demand =
-    json['demand'] != null ? new Demand.fromJson(json['demand']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -67,16 +64,12 @@ class CatalogueItem {
     if (this.offers != null) {
       data['offers'] = this.offers.map((v) => v.toJson()).toList();
     }
-    if (this.demand != null) {
-      data['demand'] = this.demand.toJson();
-    }
     return data;
   }
 }
 
 class ItemDetails {
   String aid;
-  Ids ids;
   Titles titles;
   String model;
   String brand;
@@ -87,7 +80,6 @@ class ItemDetails {
 
   ItemDetails(
       {this.aid,
-        this.ids,
         this.titles,
         this.model,
         this.brand,
@@ -98,7 +90,6 @@ class ItemDetails {
 
   ItemDetails.fromJson(Map<String, dynamic> json) {
     aid = json['aid'];
-    ids = json['ids'] != null ? new Ids.fromJson(json['ids']) : null;
     titles =
     json['titles'] != null ? new Titles.fromJson(json['titles']) : null;
     model = json['model'];
@@ -116,9 +107,6 @@ class ItemDetails {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['aid'] = this.aid;
-    if (this.ids != null) {
-      data['ids'] = this.ids.toJson();
-    }
     if (this.titles != null) {
       data['titles'] = this.titles.toJson();
     }
@@ -134,25 +122,6 @@ class ItemDetails {
     if (this.msrp != null) {
       data['msrp'] = this.msrp.toJson();
     }
-    return data;
-  }
-}
-
-class Ids {
-  List<String> aSIN;
-  List<String> eAN;
-
-  Ids({this.aSIN, this.eAN});
-
-  Ids.fromJson(Map<String, dynamic> json) {
-    aSIN = json['ASIN'].cast<String>();
-    eAN = json['EAN'].cast<String>();
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['ASIN'] = this.aSIN;
-    data['EAN'] = this.eAN;
     return data;
   }
 }
