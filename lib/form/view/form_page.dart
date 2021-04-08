@@ -16,6 +16,10 @@ class FormPage extends StatelessWidget {
   FormPage({Key key, @required this.scannerItem}) : super(key: key);
   final _formKey = GlobalKey<FormState>();
 
+  // const secondaryCat = if(model.listingTemplate.secondaryCategory != null) {
+  // model.listingTemplate.secondaryCategory
+  // }
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<FormViewModel>(
@@ -129,13 +133,11 @@ class FormPage extends StatelessWidget {
                             Text(
                               model.listingTemplate.category,
                               style: TextStyle(
-                                // fontWeight: FontWeight.bold,
                                 fontSize: 16,
                               )),
                             Text(
-                              'Lorem Ipsum > Accessories',
+                              model.listingTemplate.categories[1].name + " > " + model.listingTemplate.categories[2].name,
                               style: TextStyle(
-                                // fontWeight: FontWeight.bold,
                                 fontSize: 10,
                                 color: AppColors.DARKGREY
                               )),
