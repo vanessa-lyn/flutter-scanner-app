@@ -196,7 +196,8 @@ class FormPage extends StatelessWidget {
                                   maxLines: 5,
                                   expands: false,
                                   decoration: InputDecoration(
-                                      labelText: 'Description (optional)',
+                                      labelText: 'Description',
+                                      floatingLabelBehavior: FloatingLabelBehavior.always,
                                       border: OutlineInputBorder(),
                                       enabledBorder: const OutlineInputBorder(
                                         borderSide:
