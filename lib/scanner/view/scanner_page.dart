@@ -48,7 +48,8 @@ Future<void> scanBarcodeNormal(BuildContext context) async {
     ScannerViewModel model = Provider.of<ScannerViewModel>(context, listen: false);
     ScannerItem scannerItem = await model.onScanResult(barcodeScanRes);
 
-    Navigator.pushNamed(context, formRoute, arguments: scannerItem);
+    Navigator.pushNamedAndRemoveUntil(context, formRoute, (Route<dynamic> route) => false, arguments: scannerItem);
+
 
   } on PlatformException {
     throw Exception("There was an issue scanning");

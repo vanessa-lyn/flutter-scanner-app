@@ -38,7 +38,9 @@ class FormPage extends StatelessWidget {
                   automaticallyImplyLeading: false,
                 leading: new IconButton(
                   icon: new Icon(Icons.arrow_back),
-                  onPressed: () => {Navigator.pushNamed(context, rootRoute)}
+                  onPressed: () => {
+                    Navigator.pushNamed(context, rootRoute)
+                  }
                 ),
                 ),
               body: Form(

@@ -79,7 +79,7 @@ class SuccessPage extends StatelessWidget {
                 ScanMeButton(
                   buttonText: "Scan another item",
                   onPressed: () {
-                    Navigator.pushNamed(context, rootRoute);
+                    Navigator.pushNamedAndRemoveUntil(context, rootRoute, (Route<dynamic> route) => false);
                   },
                 ),
                 Container(height: 16),
