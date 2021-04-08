@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:scan_me/form/data/repository/selling_result.dart';
 import 'package:scan_me/form/view/form_page.dart';
 import 'package:scan_me/scanner/data/scanner_item.dart';
 import 'package:scan_me/scanner/view/scanner_page.dart';
-import 'package:scan_me/success/success_page.dart';
+import 'package:scan_me/success/view/success_page.dart';
 
 const rootRoute = "/";
 const formRoute = "/formRoute";
@@ -24,7 +25,7 @@ class AppRouter {
       case successRoute:
         return MaterialPageRoute(
           settings: settings,
-          builder: (_) => SuccessPage(),
+          builder: (_) => SuccessPage(sellingResult: settings.arguments as SellingResult),
         );
       default:
         return MaterialPageRoute(
