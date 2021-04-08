@@ -12,7 +12,7 @@ class TextHeader extends StatelessWidget {
     return Text(
       'Great, let\'s get a few\nmore details.',
       style: TextStyle(
-        fontSize: 24,
+        fontSize: 30,
         fontWeight: FontWeight.bold,
       ),
     );

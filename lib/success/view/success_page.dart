@@ -7,7 +7,7 @@ import 'package:scan_me/common/view/widgets/scan_me_button.dart';
 import 'package:scan_me/form/data/repository/selling_result.dart';
 import 'package:scan_me/success/presentation/success_view_model.dart';
 
-const double FONT_SIZE_BODY = 12;
+const double FONT_SIZE_BODY = 16;
 
 class SuccessPage extends StatelessWidget {
   final SellingResult sellingResult;
@@ -25,19 +25,19 @@ class SuccessPage extends StatelessWidget {
             padding: EdgeInsets.only(left: 14, right: 14),
             child: Column(
               children: [
-                Container(height: 60),
+                Container(height: 80),
                 CircleAvatar(
                   radius: 80,
                   backgroundColor: Colors.transparent,
                   backgroundImage: AssetImage('frame.png'),
                 ),
-                Container(height: 16),
+                Container(height: 20),
                 Text(
                   "Great, that listing is live and \navailable for purchase.",
-                  style: TextStyle(fontSize: FONT_SIZE, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
-                Container(height: 40),
+                Container(height: 34),
                 SizedBox(
                   width: double.infinity,
                   child: Flexible(
@@ -59,7 +59,7 @@ class SuccessPage extends StatelessWidget {
                                   Container(height: 10),
                                   Text(
                                     model.viewState.sellingResult.formattedPaymentMethod,
-                                    style: TextStyle(fontSize: 10),
+                                    style: TextStyle(fontSize: 14),
                                   ),
                                   Container(height: 2),
                                   Text(

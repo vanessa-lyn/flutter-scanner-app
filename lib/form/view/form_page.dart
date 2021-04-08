@@ -140,12 +140,12 @@ class FormPage extends StatelessWidget {
                                       children: [
                                         Text(model.listingTemplate.category,
                                             style: TextStyle(
-                                              fontSize: 16,
+                                              fontSize: 20,
                                             )),
                                         Text(
                                             model.listingTemplate.categoryPath,
                                             style: TextStyle(
-                                                fontSize: 10,
+                                                fontSize: 14,
                                                 color: AppColors.DARKGREY)),
                                       ])
                                 ],
