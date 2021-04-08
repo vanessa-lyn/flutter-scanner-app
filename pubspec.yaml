@@ -44,7 +44,7 @@ dev_dependencies:
 flutter:
   assets:
     - local_config.json
-#    - frame.png
+    - frame.png
 #    - listing_live.svg
 
   # The following line ensures that the Material Icons font is
