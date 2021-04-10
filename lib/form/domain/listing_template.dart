@@ -10,7 +10,8 @@ class ListingTemplate {
   String categoryPath;
 
   ListingTemplate(
-      {this.title,
+      {
+      this.title,
       this.imageUrl,
       this.formattedPrice,
       this.quantity,
